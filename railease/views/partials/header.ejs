@@ -1,0 +1,59 @@
+<!-- Top Header Bar -->
+<header class="top-header" id="topHeader">
+  <div class="header-left">
+    <!-- Mobile Hamburger Toggle -->
+    <button type="button" class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+      <span class="material-symbols-outlined" style="font-size:22px;">menu</span>
+    </button>
+    
+    <!-- Greeting & Live Status Indicator -->
+    <div class="header-greeting-wrap">
+      <span class="greeting-sub">Welcome back,</span>
+      <span class="greeting-user"><%= (typeof userName !== 'undefined' && userName) ? userName : 'Traveler' %></span>
+    </div>
+    
+    <div class="header-system-status">
+      <span class="status-pulse-dot"></span>
+      <span>Network Live</span>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <!-- Quick Search Pill -->
+    <a href="/trains/search" class="header-quick-link" title="Search Trains & Schedules">
+      <span class="material-symbols-outlined" style="font-size:17px; color:var(--primary);">search</span>
+      <span class="quick-link-text">Search Trains</span>
+    </a>
+
+    <!-- Quick PNR Status Pill -->
+    <a href="/bookings/pnr/check" class="header-quick-link" title="Check 10-Digit PNR Status">
+      <span class="material-symbols-outlined" style="font-size:17px; color:var(--primary);">update</span>
+      <span class="quick-link-text">PNR Status</span>
+    </a>
+
+    <div class="header-divider"></div>
+
+    <!-- User Profile Pill -->
+    <a href="/profile" class="header-profile-pill" title="View Profile">
+      <div class="header-avatar">
+        <%= (typeof userName !== 'undefined' && userName && userName.length > 0) ? userName.charAt(0).toUpperCase() : 'T' %>
+      </div>
+      <span class="header-profile-name"><%= (typeof userName !== 'undefined' && userName) ? userName : 'Profile' %></span>
+    </a>
+
+    <!-- Sign Out Button -->
+    <a href="/auth/logout" class="header-logout-btn" title="Sign out of RailEase">
+      <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+      <span>Logout</span>
+    </a>
+  </div>
+</header>
+
+<script>
+  function toggleSidebar() {
+    var sidebar = document.getElementById('appSidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+    if (sidebar) sidebar.classList.toggle('open');
+    if (backdrop) backdrop.classList.toggle('open');
+  }
+</script>

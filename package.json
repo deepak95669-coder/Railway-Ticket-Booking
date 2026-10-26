@@ -1,0 +1,11 @@
+{
+  "name": "ooase-railway-reservation",
+  "version": "1.0.0",
+  "description": "RailEase Railway Reservation System",
+  "scripts": {
+    "start": "npm start --prefix railease",
+    "dev": "npm run dev --prefix railease",
+    "seed": "npm run seed --prefix railease",
+    "postinstall": "npm install --prefix railease"
+  }
+}

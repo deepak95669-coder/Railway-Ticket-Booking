@@ -1,0 +1,7 @@
+node_modules/
+railease/node_modules/
+.env
+railease/.env
+*.log
+.vscode/
+.DS_Store

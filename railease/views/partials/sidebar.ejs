@@ -1,0 +1,75 @@
+<!-- Left Sidebar Navigation -->
+<aside class="app-sidebar" id="appSidebar">
+  <!-- Brand Header -->
+  <div class="sidebar-brand">
+    <a href="/dashboard" class="brand-link">
+      <div class="brand-icon-box">
+        <span class="material-symbols-outlined" style="font-size:22px; font-variation-settings:'FILL' 1;">train</span>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">RailEase</span>
+        <span class="brand-tag">Express Portal</span>
+      </div>
+    </a>
+    <button type="button" class="sidebar-mobile-close" id="sidebarCloseBtn" aria-label="Close menu" onclick="toggleSidebar()">
+      <span class="material-symbols-outlined" style="font-size:20px;">close</span>
+    </button>
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Navigation</div>
+
+    <a href="/dashboard" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'dashboard' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">dashboard</span>
+      <span>Dashboard</span>
+    </a>
+
+    <a href="/trains/search" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'book-tickets' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">confirmation_number</span>
+      <span>Book Tickets</span>
+    </a>
+
+    <a href="/trains/search" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'search-trains' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">train</span>
+      <span>Search Trains</span>
+    </a>
+
+    <a href="/bookings" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'my-bookings' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">book_online</span>
+      <span>My Bookings</span>
+    </a>
+
+    <a href="/bookings/pnr/check" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'pnr-status' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">update</span>
+      <span>PNR Status</span>
+    </a>
+
+    <div class="nav-section-title" style="margin-top:0.75rem;">Account</div>
+
+    <a href="/profile" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'my-profile' ? 'active-nav' : 'inactive-nav' %>">
+      <span class="material-symbols-outlined nav-icon">person</span>
+      <span>My Profile</span>
+    </a>
+  </nav>
+
+  <!-- Sidebar Footer: User Card & Sign Out -->
+  <div class="sidebar-footer">
+    <div class="user-snippet">
+      <div class="user-avatar-small">
+        <%= (typeof userName !== 'undefined' && userName && userName.length > 0) ? userName.charAt(0).toUpperCase() : 'T' %>
+      </div>
+      <div class="user-meta">
+        <span class="user-name"><%= typeof userName !== 'undefined' && userName ? userName : 'Traveler' %></span>
+        <span class="user-role">Verified Passenger</span>
+      </div>
+    </div>
+    <a href="/auth/logout" class="sidebar-logout" title="Sign out of your account">
+      <span class="material-symbols-outlined" style="font-size:18px;">logout</span>
+      <span>Sign Out</span>
+    </a>
+  </div>
+</aside>
+
+<!-- Mobile Overlay Backdrop -->
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>

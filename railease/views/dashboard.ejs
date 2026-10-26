@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+</head>
+<body style="background:var(--surface);">
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/header') %>
+  <main style="padding:2rem 3rem; background:var(--surface); min-height:calc(100vh - 4rem);">
+
+    <!-- Flash Messages -->
+    <% if (success && success.length > 0) { %>
+      <div class="flash-success fade-in"><span class="material-symbols-outlined" style="font-size:18px;">check_circle</span><%= success[0] %></div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+      <div class="flash-error fade-in"><span class="material-symbols-outlined" style="font-size:18px;">error</span><%= error[0] %></div>
+    <% } %>
+
+    <!-- Hero Banner -->
+    <div style="position:relative; background:var(--surface-container-low); border-radius:16px; padding:2.5rem 3rem; overflow:hidden; margin-bottom:2.5rem;">
+      <div style="position:absolute; right:0; top:0; width:30%; height:100%; opacity:0.08; background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuApW_OQla3C2MpsXEmbnNiYqjzUBJCgh98bL-j9DsmgEHaGABiDErKN4h49aengHzOf6ef-81SJcHusdYUtoBMQVP-FCNeqfhCAiPVwbHn6Gu7yUbOM--LPO_dSn52wlqdk02ywfNfD-O4FlKcJKo6rCP2oLp_IS7f0c_oN_7AzBrrXirgN55vA8dSWKASktUiOue2kp_xYF0WlBW6mAyscbIjOoTR-zbSDL-c4sEd4'); background-size:cover; background-position:center;"></div>
+      <div style="position:relative; z-index:1; max-width:700px;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.6rem;">
+          <span style="display:inline-block; width:2rem; height:2px; background:var(--primary);"></span>
+          <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--primary); font-weight:700;">Express Transit Hub</span>
+        </div>
+        <h1 class="font-headline" style="font-size:2.5rem; font-weight:700; color:var(--on-surface); line-height:1.1; margin-bottom:0.75rem;">Your Journey Starts Here</h1>
+        <p style="color:var(--on-surface-variant); font-size:0.95rem; max-width:520px; line-height:1.7;">
+          Seamlessly traverse the subcontinent with priority booking, real-time telemetry, and curated luxury rail experiences.
+        </p>
+      </div>
+
+      <!-- Stats Row -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:2rem; position:relative; z-index:1;">
+        <div class="stat-card fade-in">
+          <div>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.25rem;">Total Bookings</span>
+            <span class="font-headline" style="font-size:2rem; font-weight:700; color:var(--on-surface);"><%= stats.totalBookings %></span>
+            <span style="font-size:0.72rem; color:var(--primary); font-weight:600; display:block; margin-top:0.25rem;">+2 this month</span>
+          </div>
+          <div style="width:48px; height:48px; border-radius:10px; background:var(--primary-fixed); display:flex; align-items:center; justify-content:center; color:var(--primary);">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">confirmation_number</span>
+          </div>
+        </div>
+        <div class="stat-card fade-in" style="animation-delay:0.05s;">
+          <div>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.25rem;">Upcoming Journeys</span>
+            <span class="font-headline" style="font-size:2rem; font-weight:700; color:var(--on-surface);"><%= stats.upcoming %></span>
+            <span style="font-size:0.72rem; color:var(--tertiary); font-weight:600; display:block; margin-top:0.25rem;">Next in 2 days</span>
+          </div>
+          <div style="width:48px; height:48px; border-radius:10px; background:rgba(249,227,122,0.3); display:flex; align-items:center; justify-content:center; color:var(--tertiary);">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">train</span>
+          </div>
+        </div>
+        <div class="stat-card fade-in" style="animation-delay:0.1s;">
+          <div>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.25rem;">Completed</span>
+            <span class="font-headline" style="font-size:2rem; font-weight:700; color:var(--on-surface);"><%= stats.completed %></span>
+            <span style="font-size:0.72rem; color:var(--on-surface-variant); font-weight:600; display:block; margin-top:0.25rem;">100% on time</span>
+          </div>
+          <div style="width:48px; height:48px; border-radius:10px; background:var(--surface-container-high); display:flex; align-items:center; justify-content:center; color:var(--on-surface-variant);">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">done_all</span>
+          </div>
+        </div>
+        <div class="stat-card fade-in" style="animation-delay:0.15s;">
+          <div>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.25rem;">Cancelled</span>
+            <span class="font-headline" style="font-size:2rem; font-weight:700; color:var(--on-surface);"><%= stats.cancelled %></span>
+            <span style="font-size:0.72rem; color:var(--error); font-weight:600; display:block; margin-top:0.25rem;">Fully refunded</span>
+          </div>
+          <div style="width:48px; height:48px; border-radius:10px; background:var(--error-container); display:flex; align-items:center; justify-content:center; color:var(--error);">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">cancel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Grid: Quick Search + Popular Routes -->
+    <div style="display:grid; grid-template-columns:2fr 1fr; gap:2rem;">
+      <!-- Left: Quick Search + Upcoming Journey -->
+      <div style="display:flex; flex-direction:column; gap:2rem;">
+        <!-- Quick Search Card -->
+        <div class="card fade-in">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 class="font-headline" style="font-size:1.4rem; font-weight:700; color:var(--on-surface);">Quick Train Search</h2>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary); font-weight:700; background:var(--primary-fixed); padding:0.3rem 0.8rem; border-radius:999px;">Live Schedule</span>
+          </div>
+          <form action="/trains/search" method="GET" style="display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; position:relative;">
+              <div style="background:var(--surface-container-low); padding:1rem; border-radius:10px;">
+                <label style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;">From Station</label>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:1.1rem;">trip_origin</span>
+                  <input type="text" name="from" placeholder="e.g. MAS" style="background:transparent; border:none; outline:none; font-size:0.95rem; color:var(--on-surface); font-weight:600; width:100%;" value="<%= typeof query !== 'undefined' && query.from ? query.from : '' %>"/>
+                </div>
+              </div>
+              <div style="background:var(--surface-container-low); padding:1rem; border-radius:10px;">
+                <label style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;">To Station</label>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:1.1rem;">location_on</span>
+                  <input type="text" name="to" placeholder="e.g. SBC" style="background:transparent; border:none; outline:none; font-size:0.95rem; color:var(--on-surface); font-weight:600; width:100%;" value="<%= typeof query !== 'undefined' && query.to ? query.to : '' %>"/>
+                </div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem;">
+              <div style="background:var(--surface-container-low); padding:1rem; border-radius:10px;">
+                <label style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;">Journey Date</label>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:1.1rem;">calendar_today</span>
+                  <input type="date" name="date" style="background:transparent; border:none; outline:none; font-size:0.875rem; color:var(--on-surface); font-weight:600;" required/>
+                </div>
+              </div>
+              <div style="background:var(--surface-container-low); padding:1rem; border-radius:10px;">
+                <label style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;">Class</label>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:1.1rem;">airline_seat_recline_normal</span>
+                  <select name="travelClass" style="background:transparent; border:none; outline:none; font-size:0.875rem; color:var(--on-surface); font-weight:600; cursor:pointer;">
+                    <option value="">All Classes</option>
+                    <option value="1A">AC First (1A)</option>
+                    <option value="2A">AC 2 Tier (2A)</option>
+                    <option value="3A">AC 3 Tier (3A)</option>
+                    <option value="SL">Sleeper (SL)</option>
+                    <option value="CC">Chair Car (CC)</option>
+                  </select>
+                </div>
+              </div>
+              <div style="background:var(--surface-container-low); padding:1rem; border-radius:10px;">
+                <label style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;">Passengers</label>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:1.1rem;">group</span>
+                  <select style="background:transparent; border:none; outline:none; font-size:0.875rem; color:var(--on-surface); font-weight:600;">
+                    <option>1 Adult</option><option>2 Adults</option><option>Family (3-5)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:flex-end;">
+              <button type="submit" class="btn-primary">
+                <span class="material-symbols-outlined">search</span> Search Trains
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Next Journey -->
+        <% if (nextJourney && nextJourney.train) { %>
+        <div class="card fade-in">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="width:12px; height:12px; border-radius:50%; background:var(--tertiary); display:inline-block; animation:pulse 1.5s infinite;"></span>
+              <h3 class="font-headline" style="font-size:1.2rem; font-weight:700; color:var(--on-surface);">Next Upcoming Journey</h3>
+            </div>
+            <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; color:var(--tertiary); font-weight:700; background:rgba(249,227,122,0.3); padding:0.3rem 0.8rem; border-radius:999px;">PNR: <%= nextJourney.pnrNumber %></span>
+          </div>
+          <div style="background:var(--surface-container-low); padding:1.5rem; border-radius:10px; display:grid; grid-template-columns:1fr 2fr 1fr; gap:1rem; align-items:center;">
+            <div>
+              <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; color:var(--on-surface-variant); display:block; margin-bottom:0.25rem;">Train Info</span>
+              <span class="font-headline" style="font-size:1rem; font-weight:700; color:var(--on-surface); display:block;"><%= nextJourney.train.trainNumber %> - <%= nextJourney.train.trainName %></span>
+              <span style="font-size:0.72rem; color:var(--primary); font-weight:600;"><%= nextJourney.travelClass %></span>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="text-align:center;">
+                <span class="font-headline" style="font-size:1.5rem; font-weight:700; color:var(--on-surface); display:block;"><%= nextJourney.train.departureTime %></span>
+                <span style="font-family:'Public Sans',sans-serif; font-size:0.7rem; color:var(--on-surface-variant);"><%= nextJourney.train.fromCode %></span>
+              </div>
+              <div style="flex:1; text-align:center; padding:0 1rem;">
+                <span style="font-size:0.72rem; color:var(--on-surface-variant); display:block; margin-bottom:0.35rem;"><%= nextJourney.train.duration %></span>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <div style="flex:1; height:2px; background:rgba(195,198,213,0.4);"></div>
+                  <span class="material-symbols-outlined" style="color:var(--primary); font-size:16px;">train</span>
+                  <div style="flex:1; height:2px; background:rgba(195,198,213,0.4);"></div>
+                </div>
+                <span style="font-size:0.65rem; color:var(--tertiary); font-weight:700; display:block; margin-top:0.35rem;">On Time</span>
+              </div>
+              <div style="text-align:center;">
+                <span class="font-headline" style="font-size:1.5rem; font-weight:700; color:var(--on-surface); display:block;"><%= nextJourney.train.arrivalTime %></span>
+                <span style="font-family:'Public Sans',sans-serif; font-size:0.7rem; color:var(--on-surface-variant);"><%= nextJourney.train.toCode %></span>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem;">
+              <a href="/bookings/<%= nextJourney._id %>" class="btn-secondary" style="font-size:0.72rem;">View Ticket</a>
+            </div>
+          </div>
+        </div>
+        <% } else { %>
+        <div class="card fade-in" style="text-align:center; padding:3rem;">
+          <span class="material-symbols-outlined" style="font-size:3rem; color:var(--outline); display:block; margin-bottom:1rem;">train</span>
+          <p class="font-headline" style="color:var(--on-surface-variant); font-size:1rem;">No upcoming journeys found.</p>
+          <a href="/trains/search" class="btn-primary" style="margin-top:1rem; display:inline-flex;">Search Trains</a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- Right: Popular Routes + Promo -->
+      <div style="display:flex; flex-direction:column; gap:2rem;">
+        <div class="card fade-in">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h3 class="font-headline" style="font-size:1.2rem; font-weight:700; color:var(--on-surface);">Popular Routes</h3>
+            <a href="/trains/search" style="font-family:'Public Sans',sans-serif; font-size:0.72rem; color:var(--primary); font-weight:700; text-decoration:none;">Explore All</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0.75rem;">
+            <% const routes = [
+              {from:'Delhi',to:'Mumbai',code:'DL',train:'Rajdhani Express',time:'15h 30m', f:'NDLS', t:'BCT'},
+              {from:'Chennai',to:'Bengaluru',code:'CB',train:'Shatabdi Exp',time:'5h 25m', f:'MAS', t:'SBC'},
+              {from:'Howrah',to:'Mumbai',code:'HM',train:'Gitanjali Exp',time:'30h 10m', f:'HWH', t:'MMCT'},
+              {from:'Varanasi',to:'Gaya',code:'VG',train:'Vande Bharat',time:'2h 45m', f:'BSB', t:'GAYA'}
+            ]; %>
+            <% routes.forEach(r => { %>
+            <a href="/trains/search?from=<%= r.f %>&to=<%= r.t %>&date=" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; padding:0.875rem; border-radius:10px; background:var(--surface-container-low); transition:background 0.2s;" onmouseover="this.style.background='var(--surface-container-high)'" onmouseout="this.style.background='var(--surface-container-low)'">
+              <div style="display:flex; align-items:center; gap:0.875rem;">
+                <div style="width:38px; height:38px; border-radius:8px; background:var(--primary-fixed); display:flex; align-items:center; justify-content:center; font-family:'Noto Serif',serif; font-weight:700; color:var(--primary); font-size:0.75rem;"><%= r.code %></div>
+                <div>
+                  <div class="font-headline" style="font-weight:700; color:var(--on-surface); font-size:0.875rem;"><%= r.from %> to <%= r.to %></div>
+                  <div style="font-size:0.72rem; color:var(--on-surface-variant);"><%= r.train %> • <%= r.time %></div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined" style="color:var(--on-surface-variant); font-size:1.1rem;">arrow_forward</span>
+            </a>
+            <% }); %>
+          </div>
+        </div>
+
+        <!-- Promo Card -->
+        <div style="background:var(--primary); border-radius:14px; padding:2rem; position:relative; overflow:hidden; color:var(--on-primary);" class="fade-in">
+          <span style="font-family:'Public Sans',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--primary-fixed-dim); font-weight:700; display:block; margin-bottom:0.5rem;">RailEase Guarantee</span>
+          <h3 class="font-headline" style="font-size:1.2rem; font-weight:700; margin-bottom:0.75rem;">Instant Tatkal Refunds</h3>
+          <p style="font-size:0.82rem; color:rgba(227,226,227,0.85); line-height:1.6; margin-bottom:1.25rem;">
+            Get automated instant refunds directly to your source payment method within 2 hours for all waitlisted and cancelled tickets.
+          </p>
+          <a href="/bookings" class="btn-secondary" style="font-size:0.72rem;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<style>
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+</style>
+</body>
+</html>
